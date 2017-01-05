@@ -183,13 +183,14 @@ Currently the transformed format is
                            (ivy-rich-switch-buffer-shorten-path path)
                          path))
                  (path (ivy-rich-switch-buffer-pad path path-max-length))
-                 (display (format "%s%s%s%s%s%s%s%s%s%s"
+                 (display (format "%s%s%s%s%s"
                                   name
-                                  size ivy-rich-switch-buffer-delimiter
-                                  indicator ivy-rich-switch-buffer-delimiter
+                                  ;;size ivy-rich-switch-buffer-delimiter
+                                  ;;indicator ivy-rich-switch-buffer-delimiter
                                   mode ivy-rich-switch-buffer-delimiter
                                   project ivy-rich-switch-buffer-delimiter
-                                  path)))
+                                  ;;path
+                                  )))
             display))
       (if (and (eq ivy-virtual-abbreviate 'full)
                ivy-rich-switch-buffer-align-virtual-buffer)
@@ -216,7 +217,7 @@ Currently the transformed format is
                                                         ;; Fixed the unexpected wrapping in terminal
                                                         1))))
         str))))
-
+(message "ivy-rich loaded from personal config")
 (provide 'ivy-rich)
 
 ;;; ivy-rich.el ends here
