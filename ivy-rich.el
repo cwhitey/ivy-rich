@@ -122,29 +122,29 @@ Currently the transformed format is
     (if buf
         (with-current-buffer buf
           (let* (;; Indicators
-                 (modified (propertize (if (and (buffer-modified-p)
-                                                (ivy-rich-switch-buffer-excluded-modes-p '(dired-mode shell-mode))
-                                                (ivy-rich-switch-buffer-user-buffer-p str))
-                                           "*"
-                                         "")
-                                       'face 'error))
-                 (readonly (propertize (if (and buffer-read-only
-                                                (ivy-rich-switch-buffer-user-buffer-p str))
-                                           "!"
-                                         "")
-                                       'face 'error))
-                 (process (propertize (if (get-buffer-process (current-buffer))
-                                          "&"
-                                        "")
-                                      'face 'error))
-                 (indicator (ivy-rich-switch-buffer-pad (format "%s%s%s" readonly modified process) 3))
+                 ;; (modified (propertize (if (and (buffer-modified-p)
+                 ;;                                (ivy-rich-switch-buffer-excluded-modes-p '(dired-mode shell-mode))
+                 ;;                                (ivy-rich-switch-buffer-user-buffer-p str))
+                 ;;                           "*"
+                 ;;                         "")
+                 ;;                       'face 'error))
+                 ;; (readonly (propertize (if (and buffer-read-only
+                 ;;                                (ivy-rich-switch-buffer-user-buffer-p str))
+                 ;;                           "!"
+                 ;;                         "")
+                 ;;                       'face 'error))
+                 ;; (process (propertize (if (get-buffer-process (current-buffer))
+                 ;;                          "&"
+                 ;;                        "")
+                 ;;                      'face 'error))
+                 ;; (indicator (ivy-rich-switch-buffer-pad (format "%s%s%s" readonly modified process) 3))
                  ;; Size
-                 (size (buffer-size))
-                 (size (cond
-                        ((> size 1000000) (format "%.1fM " (/ size 1000000.0)))
-                        ((> size 1000) (format "%.1fk " (/ size 1000.0)))
-                        (t (format "%d " size))))
-                 (size (ivy-rich-switch-buffer-pad size ivy-rich-switch-buffer-buffer-size-length t))
+                 ;; (size (buffer-size))
+                 ;; (size (cond
+                 ;;        ((> size 1000000) (format "%.1fM " (/ size 1000000.0)))
+                 ;;        ((> size 1000) (format "%.1fk " (/ size 1000.0)))
+                 ;;        (t (format "%d " size))))
+                 ;; (size (ivy-rich-switch-buffer-pad size ivy-rich-switch-buffer-buffer-size-length t))
                  ;; Buffer name
                  (name (ivy-rich-switch-buffer-pad str ivy-rich-switch-buffer-name-max-length))
                  (name (propertize name 'face 'ivy-modified-buffer))
@@ -167,22 +167,22 @@ Currently the transformed format is
                                    ""
                                  (file-truename (projectile-project-root))))
                  ;; Path
-                 (path-max-length (- (window-width (minibuffer-window))
-                                     ivy-rich-switch-buffer-name-max-length
-                                     (length indicator)
-                                     ivy-rich-switch-buffer-buffer-size-length
-                                     ivy-rich-switch-buffer-mode-max-length
-                                     ivy-rich-switch-buffer-project-max-length
-                                     ;; Fixed the unexpected wrapping in terminal
-                                     1))
-                 (path (file-truename (or (buffer-file-name) default-directory)))
-                 (path (if (string-empty-p project)
-                           path
-                         (substring-no-properties path (length project-home))))
-                 (path (if (> (length path) path-max-length)
-                           (ivy-rich-switch-buffer-shorten-path path)
-                         path))
-                 (path (ivy-rich-switch-buffer-pad path path-max-length))
+                 ;; (path-max-length (- (window-width (minibuffer-window))
+                 ;;                     ivy-rich-switch-buffer-name-max-length
+                 ;;                     (length indicator)
+                 ;;                     ivy-rich-switch-buffer-buffer-size-length
+                 ;;                     ivy-rich-switch-buffer-mode-max-length
+                 ;;                     ivy-rich-switch-buffer-project-max-length
+                 ;;                     ;; Fixed the unexpected wrapping in terminal
+                 ;;                     1))
+                 ;; (path (file-truename (or (buffer-file-name) default-directory)))
+                 ;; (path (if (string-empty-p project)
+                 ;;           path
+                 ;;         (substring-no-properties path (length project-home))))
+                 ;; (path (if (> (length path) path-max-length)
+                 ;;           (ivy-rich-switch-buffer-shorten-path path)
+                 ;;         path))
+                 ;; (path (ivy-rich-switch-buffer-pad path path-max-length))
                  (display (format "%s%s%s%s%s"
                                   name
                                   ;;size ivy-rich-switch-buffer-delimiter
