@@ -146,11 +146,13 @@ Currently the transformed format is
                  ;;        (t (format "%d " size))))
                  ;; (size (ivy-rich-switch-buffer-pad size ivy-rich-switch-buffer-buffer-size-length t))
                  ;; Buffer name
-                 (name (ivy-rich-switch-buffer-pad str ivy-rich-switch-buffer-name-max-length))
-                 (name (propertize name 'face 'ivy-modified-buffer))
+                 (name (propertize (ivy-rich-switch-buffer-pad str ivy-rich-switch-buffer-name-max-length)
+                                   'face
+                                   'ivy-modified-buffer)) 
                  ;; Major mode
-                 (mode (ivy-rich-switch-buffer-pad (ivy-rich-switch-buffer-mode major-mode) ivy-rich-switch-buffer-mode-max-length))
-                 (mode (propertize mode 'face 'warning))
+                 (mode (propertize (ivy-rich-switch-buffer-pad (ivy-rich-switch-buffer-mode major-mode) ivy-rich-switch-buffer-mode-max-length)
+                                   'face
+                                   'warning)) 
                  ;; Project
                  (project
                   (if (not (bound-and-true-p projectile-mode))
@@ -162,10 +164,10 @@ Currently the transformed format is
                                      project)
                                    ivy-rich-switch-buffer-project-max-length)
                                   'face 'success))))
-                 (project-home (if (or (string-empty-p project)
-                                       (not (projectile-project-p)))
-                                   ""
-                                 (file-truename (projectile-project-root))))
+                 ;; (project-home (if (or (string-empty-p project)
+                 ;;                       (not (projectile-project-p)))
+                 ;;                   ""
+                 ;;                 (file-truename (projectile-project-root))))
                  ;; Path
                  ;; (path-max-length (- (window-width (minibuffer-window))
                  ;;                     ivy-rich-switch-buffer-name-max-length
@@ -184,11 +186,11 @@ Currently the transformed format is
                  ;;         path))
                  ;; (path (ivy-rich-switch-buffer-pad path path-max-length))
                  (display (format "%s%s%s%s%s"
-                                  name
+                                  name ivy-rich-switch-buffer-delimiter
                                   ;;size ivy-rich-switch-buffer-delimiter
                                   ;;indicator ivy-rich-switch-buffer-delimiter
                                   mode ivy-rich-switch-buffer-delimiter
-                                  project ivy-rich-switch-buffer-delimiter
+                                  project
                                   ;;path
                                   )))
             display))
